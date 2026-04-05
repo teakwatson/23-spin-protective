@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spin Protective Warrior | Professional Protection Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --black:#030506;
+      --dark:#080c10;
+      --card:#0d1117;
+      --border:rgba(255,255,255,0.06);
+      --steel:#1e2d3d;
+      --blue:#0a84ff;
+      --blue-dim:rgba(10,132,255,0.15);
+      --cyan:#30d5c8;
+      --white:#e8edf2;
+      --muted:rgba(232,237,242,0.4);
+      --red:#ff3b30;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;font-weight:300;overflow-x:hidden;}
+
+    /* scanline effect */
+    body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.008) 2px,rgba(255,255,255,0.008) 4px);pointer-events:none;z-index:9998;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(3,5,6,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.4rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--white);}
+    .nav-logo span{color:var(--blue);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-family:'Rajdhani',sans-serif;font-weight:600;transition:color 0.3s;}
+    .nav-links a:hover{color:var(--cyan);}
+    .nav-cta{background:var(--blue);color:white!important;padding:0.45rem 1.3rem;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);}
+    .nav-cta:hover{background:#1a8fff!important;}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:8rem 3rem 4rem;}
+    .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(10,132,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,132,255,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+    .hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(10,132,255,0.12),transparent 70%);top:50%;left:60%;transform:translate(-50%,-50%);}
+    .hero-content{position:relative;z-index:2;max-width:780px;}
+    .status-bar{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;opacity:0;animation:fadeUp 0.8s 0.2s forwards;}
+    .status-dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);animation:blink 2s ease-in-out infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+    .status-text{font-family:'Share Tech Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;color:var(--cyan);}
+    .hero-title{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(3.5rem,9vw,8rem);line-height:0.9;letter-spacing:0.03em;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s 0.4s forwards;}
+    .hero-title .blue{color:var(--blue);}
+    .hero-title .outline{-webkit-text-stroke:1px rgba(232,237,242,0.3);color:transparent;}
+    .hero-desc{font-size:1rem;color:var(--muted);line-height:1.85;max-width:520px;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s 0.6s forwards;}
+    .hero-tags{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s 0.7s forwards;}
+    .tag{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.9rem;background:var(--blue-dim);color:var(--blue);border:1px solid rgba(10,132,255,0.25);}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s 0.8s forwards;}
+    .btn-blue{background:var(--blue);color:white;padding:0.9rem 2.2rem;text-decoration:none;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.12em;text-transform:uppercase;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:background 0.3s,transform 0.3s;}
+    .btn-blue:hover{background:#1a8fff;transform:translateY(-2px);}
+    .btn-frame{background:transparent;color:var(--white);padding:0.9rem 2.2rem;text-decoration:none;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:1rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(232,237,242,0.2);clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:border-color 0.3s;}
+    .btn-frame:hover{border-color:var(--cyan);color:var(--cyan);}
+    .hero-number{position:absolute;bottom:2rem;right:3rem;z-index:2;text-align:right;opacity:0;animation:fadeUp 0.8s 1s forwards;}
+    .hero-number a{font-family:'Share Tech Mono',monospace;font-size:1.1rem;color:var(--cyan);text-decoration:none;letter-spacing:0.1em;}
+    .hero-number span{display:block;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem;}
+
+    /* MARQUEE */
+    .marquee-wrap{overflow:hidden;background:var(--blue);padding:0.65rem 0;}
+    .marquee-track{display:flex;gap:2.5rem;animation:marquee 20s linear infinite;width:max-content;}
+    .marquee-item{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:white;white-space:nowrap;}
+    .m-dot{display:inline-block;width:4px;height:4px;background:rgba(255,255,255,0.4);border-radius:50%;margin:0 0.4rem;vertical-align:middle;}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* SECTION */
+    .section-inner{max-width:1200px;margin:0 auto;padding:6rem 2rem;}
+    .section-label{font-family:'Share Tech Mono',monospace;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--cyan);margin-bottom:0.8rem;}
+    .section-title{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(2.5rem,5vw,4.5rem);line-height:1;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:1rem;}
+    .section-desc{color:var(--muted);font-size:0.93rem;line-height:1.85;max-width:540px;}
+    .divider{height:1px;background:linear-gradient(to right,transparent,var(--blue),transparent);opacity:0.2;max-width:1200px;margin:0 auto;}
+
+    /* SERVICES */
+    #services{background:var(--dark);}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:3.5rem;}
+    .svc-card{background:var(--card);border:1px solid var(--border);padding:1.8rem;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s;}
+    .svc-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--blue);opacity:0;transition:opacity 0.3s;}
+    .svc-card:hover{border-color:rgba(10,132,255,0.3);transform:translateX(4px);}
+    .svc-card:hover::before{opacity:1;}
+    .svc-icon{font-size:1.6rem;margin-bottom:1rem;}
+    .svc-name{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.5rem;}
+    .svc-desc{font-size:0.82rem;color:var(--muted);line-height:1.7;}
+
+    /* WHY */
+    #why{background:var(--black);}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem;}
+    .why-visual{background:var(--card);border:1px solid var(--border);height:400px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+    .why-shield{font-size:8rem;position:relative;z-index:2;filter:drop-shadow(0 0 40px rgba(10,132,255,0.5));}
+    .why-ring{position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid rgba(10,132,255,0.15);animation:spin 20s linear infinite;}
+    .why-ring2{position:absolute;width:220px;height:220px;border-radius:50%;border:1px solid rgba(48,213,200,0.1);animation:spin 14s linear infinite reverse;}
+    @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    .why-features{display:flex;flex-direction:column;gap:1rem;}
+    .why-feat{display:flex;gap:1rem;align-items:flex-start;padding:1.2rem;background:var(--card);border:1px solid var(--border);transition:border-color 0.3s;}
+    .why-feat:hover{border-color:rgba(10,132,255,0.3);}
+    .wf-icon{font-size:1.3rem;flex-shrink:0;}
+    .wf-title{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.2rem;}
+    .wf-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;}
+
+    /* STATS */
+    #stats{background:linear-gradient(135deg,var(--blue),#0060cc);}
+    .stats-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+    .stat-num{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:3.5rem;color:white;line-height:1;}
+    .stat-label{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:0.3rem;font-family:'Share Tech Mono',monospace;}
+
+    /* CONTACT */
+    #contact{background:var(--dark);}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;}
+    .contact-card{background:var(--card);border:1px solid var(--border);padding:1.5rem;display:flex;gap:1.2rem;align-items:flex-start;transition:border-color 0.3s;margin-bottom:1rem;}
+    .contact-card:hover{border-color:rgba(10,132,255,0.3);}
+    .cc-icon{font-size:1.3rem;flex-shrink:0;}
+    .cc-label{font-family:'Share Tech Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:0.2rem;}
+    .cc-val{font-size:0.95rem;}
+    .cc-val a{color:var(--white);text-decoration:none;}
+    .cc-val a:hover{color:var(--cyan);}
+    .emergency-box{background:rgba(10,132,255,0.06);border:1px solid rgba(10,132,255,0.2);padding:2rem;}
+    .emg-title{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:0.8rem;}
+    .emg-text{font-size:0.85rem;color:var(--muted);line-height:1.8;}
+    .emg-number{font-family:'Share Tech Mono',monospace;font-size:1.6rem;color:var(--cyan);margin:1rem 0;display:block;}
+
+    /* FOOTER */
+    footer{background:var(--black);border-top:1px solid var(--border);padding:2.5rem 2rem;}
+    .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;}
+    .footer-logo{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.6rem;letter-spacing:0.15em;text-transform:uppercase;}
+    .footer-logo span{color:var(--blue);}
+    .footer-note{font-size:0.72rem;color:rgba(232,237,242,0.2);text-align:right;line-height:1.8;}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}.stats-inner{grid-template-columns:repeat(2,1fr);}.contact-grid{grid-template-columns:1fr;}.why-grid{grid-template-columns:1fr;}.why-visual{height:220px;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">SPIN <span>PROTECTIVE</span> WARRIOR</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:0673022466" class="nav-cta">Call 24/7</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="status-bar">
+      <div class="status-dot"></div>
+      <span class="status-text">// ACTIVE · NATIONWIDE · 24/7 RESPONSE</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="blue">SPIN</span><br/>
+      PROTEC<span class="outline">TION</span>
+    </h1>
+    <p class="hero-desc">Exclusive personal protection, event security, close protection bodyguards, and debt recovery. Professional, disciplined, and committed to your safety — nationwide, always ready.</p>
+    <div class="hero-tags">
+      <span class="tag">Close Protection</span>
+      <span class="tag">Event Security</span>
+      <span class="tag">Debt Collection</span>
+      <span class="tag">Strike Protection</span>
+      <span class="tag">Evictions</span>
+    </div>
+    <div class="hero-btns">
+      <a href="https://wa.me/27673022466" class="btn-blue">WhatsApp Now</a>
+      <a href="#services" class="btn-frame">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-number">
+    <span>24/7 Direct Line</span>
+    <a href="tel:0673022466">067 302 2466</a>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Close Protection<span class="m-dot"></span></span>
+    <span class="marquee-item">VIP Bodyguard<span class="m-dot"></span></span>
+    <span class="marquee-item">Event Security<span class="m-dot"></span></span>
+    <span class="marquee-item">Debt Recovery<span class="m-dot"></span></span>
+    <span class="marquee-item">Strike Protection<span class="m-dot"></span></span>
+    <span class="marquee-item">Evictions<span class="m-dot"></span></span>
+    <span class="marquee-item">Money Recovery<span class="m-dot"></span></span>
+    <span class="marquee-item">Doorman & Bouncer<span class="m-dot"></span></span>
+    <span class="marquee-item">Close Protection<span class="m-dot"></span></span>
+    <span class="marquee-item">VIP Bodyguard<span class="m-dot"></span></span>
+    <span class="marquee-item">Event Security<span class="m-dot"></span></span>
+    <span class="marquee-item">Debt Recovery<span class="m-dot"></span></span>
+    <span class="marquee-item">Strike Protection<span class="m-dot"></span></span>
+    <span class="marquee-item">Evictions<span class="m-dot"></span></span>
+    <span class="marquee-item">Money Recovery<span class="m-dot"></span></span>
+    <span class="marquee-item">Doorman & Bouncer<span class="m-dot"></span></span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label">// what we do</p>
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-desc">Full-spectrum security and protection solutions. Whether you need a single bodyguard or a full event security team — we deploy fast, nationwide.</p>
+    <div class="services-grid">
+      <div class="svc-card"><div class="svc-icon">🛡️</div><h3 class="svc-name">Close Protection</h3><p class="svc-desc">Personal VIP bodyguard services for executives, public figures, and high-risk individuals. Discreet and professional.</p></div>
+      <div class="svc-card"><div class="svc-icon">👤</div><h3 class="svc-name">Bodyguard Services</h3><p class="svc-desc">Trained personal protection officers available for short or long-term assignments anywhere in South Africa.</p></div>
+      <div class="svc-card"><div class="svc-icon">🚪</div><h3 class="svc-name">Doorman & Bouncer</h3><p class="svc-desc">Experienced, disciplined door staff for clubs, venues, and private events. Crowd control and access management.</p></div>
+      <div class="svc-card"><div class="svc-icon">🎪</div><h3 class="svc-name">Event Security</h3><p class="svc-desc">Full event security teams for concerts, corporate events, launches, and private functions. Scalable to any size.</p></div>
+      <div class="svc-card"><div class="svc-icon">🔒</div><h3 class="svc-name">Security Guards</h3><p class="svc-desc">Static and mobile security guards for business premises, residential complexes, and construction sites.</p></div>
+      <div class="svc-card"><div class="svc-icon">🚗</div><h3 class="svc-name">Car Guards</h3><p class="svc-desc">Professional car guard services for parking areas, shopping centres, and private properties.</p></div>
+      <div class="svc-card"><div class="svc-icon">💰</div><h3 class="svc-name">Money & Debt Recovery</h3><p class="svc-desc">Debt collection and money recovery services for individuals and businesses. Professional and lawful.</p></div>
+      <div class="svc-card"><div class="svc-icon">⚡</div><h3 class="svc-name">Strike Protection</h3><p class="svc-desc">Business continuity during labour unrest. Trained strike protection personnel deployed rapidly.</p></div>
+      <div class="svc-card"><div class="svc-icon">🏠</div><h3 class="svc-name">Evictions</h3><p class="svc-desc">Legal eviction support and enforcement assistance. Professional, calm, and effective.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-visual">
+        <div class="why-ring"></div>
+        <div class="why-ring2"></div>
+        <div class="why-shield">🛡️</div>
+      </div>
+      <div>
+        <p class="section-label">// why choose us</p>
+        <h2 class="section-title">Professional. Disciplined. Committed.</h2>
+        <p class="section-desc" style="margin-bottom:2rem;">We don't just provide security — we provide peace of mind. Every operative is trained, vetted, and ready to deploy at a moment's notice.</p>
+        <div class="why-features">
+          <div class="why-feat"><div class="wf-icon">⚡</div><div><p class="wf-title">Rapid Deployment</p><p class="wf-desc">Available 24/7, nationwide. We can have personnel on site fast when you need it most.</p></div></div>
+          <div class="why-feat"><div class="wf-icon">🎯</div><div><p class="wf-title">Trained Professionals</p><p class="wf-desc">Every team member is disciplined, professional, and committed to client safety above all.</p></div></div>
+          <div class="why-feat"><div class="wf-icon">🌍</div><div><p class="wf-title">Nationwide Coverage</p><p class="wf-desc">Operating across all provinces. Whether Joburg, Cape Town, Durban or beyond — we are ready.</p></div></div>
+          <div class="why-feat"><div class="wf-icon">🤝</div><div><p class="wf-title">Flexible Packages</p><p class="wf-desc">Single operative to full teams. Short-term or long-term. Tailored to your exact requirements.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stats">
+  <div class="stats-inner">
+    <div><p class="stat-num">24/7</p><p class="stat-label">Always On</p></div>
+    <div><p class="stat-num">9+</p><p class="stat-label">Services Offered</p></div>
+    <div><p class="stat-num">100%</p><p class="stat-label">Nationwide</p></div>
+    <div><p class="stat-num">0</p><p class="stat-label">Compromises</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">// reach us</p>
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-card"><div class="cc-icon">💬</div><div><p class="cc-label">WhatsApp / Call</p><p class="cc-val"><a href="https://wa.me/27673022466">067 302 2466</a></p></div></div>
+        <div class="contact-card"><div class="cc-icon">🌍</div><div><p class="cc-label">Coverage</p><p class="cc-val">Nationwide · All Provinces</p></div></div>
+        <div class="contact-card"><div class="cc-icon">⏰</div><div><p class="cc-label">Availability</p><p class="cc-val">24 Hours · 7 Days a Week</p></div></div>
+      </div>
+      <div>
+        <div class="emergency-box">
+          <p class="emg-title">🛡️ Need Protection Now?</p>
+          <p class="emg-text">We are nation-wide and always ready to assist. Call or WhatsApp us directly — day or night. Fast response, professional service.</p>
+          <a class="emg-number" href="tel:0673022466">067 302 2466</a>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://wa.me/27673022466" class="btn-blue" style="display:inline-block;">WhatsApp Now</a>
+            <a href="tel:0673022466" class="btn-frame" style="display:inline-block;">Call Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">SPIN <span>PROTECTIVE</span> WARRIOR</div>
+    <p class="footer-note">© 2026 Spin Protective Warrior. All rights reserved.<br/>Professional · Disciplined · Committed</p>
+  </div>
+</footer>
+</body>
+</html>
